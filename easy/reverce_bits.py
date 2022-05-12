@@ -7,3 +7,5 @@ class Solution:
 if __name__ == '__main__':
     all_ones = 0b11111111111111111111111111111111
     print(bin(all_ones - 0b00011111101111111111111011111110))
+
+# fixme: not submited
