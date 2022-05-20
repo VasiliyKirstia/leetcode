@@ -3,10 +3,25 @@ import math
 
 
 class Solution:
-    def median(self, ar1, ar2) -> List[int]:
-        print(ar1, ar2)
+    def m2(self, a, b):
+        return (a + b)/2
 
-        if len(ar1) == 1 and len(ar2) == 1:
+    def m3(self, a, b, c):
+        return a + b + c - max(a,b,c) - min(a, b, c)
+
+    def m4(self, a, b, c, d):
+        return 0.5 * (a+b+c+d - max(a,b,c,d) - min(a,b,c,d))
+
+    def median(self, ar1, n, ar2, m) -> List[int]:
+        print(ar1, n, ar2, m)
+
+        if n == 1:
+            if m == 1:
+                return self.m2(ar1[0], ar2[0])
+            elif m % 2 == 1:
+                return self.m3(ar1[0], ar2[0], ar2[1])
+            elif
+
             return ar1 + ar2
 
         m1 = ar1[len(ar1) // 2]
@@ -20,7 +35,7 @@ class Solution:
         return self.median(ar1[:len(ar1) // 2 + len(ar1) % 2], ar2)
 
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-        m1, m2 = self.median(nums1, nums2)
+        m2 = self.median(nums1, nums2, len(nums2) + len(nums1))
         if m1 == m2:
             return m1
 
