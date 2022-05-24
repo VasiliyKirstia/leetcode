@@ -7,19 +7,18 @@ class Solution:
         number = None
 
         for c in s:
-            print(c, "'")
             if number is None and sign is None:
                 if c == ' ':
                     pass
                 elif c in '+-':
                     sign = c
-                elif c in list('0123456789'):
+                    number = ''
+                elif c in '0123456789':
                     number = c
                 else:
                     return '', None
             else:
-                print(number, f'"{c}"')
-                if c in list('0123456789'):
+                if c in '0123456789':
                     number += c
                 else:
                     return number or '', sign
@@ -27,6 +26,8 @@ class Solution:
 
     def myAtoi(self, s: str) -> int:
         numb, sign = self.read_int(s)
+        # print(sign, numb)
+
         numb = numb.lstrip('0')
 
         if numb == '':
@@ -49,6 +50,11 @@ if __name__ == '__main__':
     s = Solution()
 
     for (t, e) in [
+        (" -  42", 0),
+        ("+ 42", 0),
+        ("   +    42", 0),
+        ("    -    42", 0),
+        ("       -42    ", -42),
         ("42", 42),
         ("   -42", -42),
         ("4193 with words", 4193),
@@ -59,4 +65,5 @@ if __name__ == '__main__':
         ("-1112147483647", 0),
         ("   +   434", 0),
     ]:
-        print(s.myAtoi(t), s.myAtoi(t) == e)
+        res = s.myAtoi(t)
+        print(res, res == e)
